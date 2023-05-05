@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<title>Shop máy ảnh</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body class="body">
+<div>
+    <header class="header">
+        <div class="grid_header">
+            <nav class="nav">
+                <ul class="header_ul">
+                    <li class="header_ul header_ul-li1">SHOP MÁY ẢNH</li>
+                </ul>
+                <img class="roll" src="./image/Roll.png" alt="Error!!!">
+                
+                <ul class="header_ul">
+                    <li class="header_ul header_ul-li2 header_Gh">Giỏ hàng</li>
+                    <!-- <li class="header_ul header_ul-li2">Đăng ký</li>
+                    <li class="header_ul header_ul-li2">Đăng nhập</li> -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="home" style="display: block;">
+        <main>
+            <div align="center">
+                <button class="btn admin_btn">Admin</button>
+                <button class="btn user_btn">User</button>
+            </div>
+            <div class="grid chucNang" style="display: none;">
+                <!-- Tab items -->
+                <div class="tabs">
+                  <div class="tab-item active">
+                    <i class="tab-icon fas fa-code"></i>
+                    Thêm sản phẩm
+                  </div>
+                  <div class="erase_btn tab-item">
+                    <i class="tab-icon fas fa-cog"></i>
+                    Xóa sản phẩm
+                  </div>
+                  <div class="edit_btn tab-item ">
+                    <i class="tab-icon fas fa-plus-circle"></i>
+                    Sửa sản phẩm
+                  </div>
+                  <div class="tab-item">
+                    <i class="tab-icon fas fa-pen-nib"></i>
+                    Vue.JS
+                  </div>
+                  <div class="line"></div>
+                </div>
+              
+                <!-- Tab content -->
+                <div class="tab-content">
+                  <div id="insert_id" class="tab-pane active">
+                    <div class="insert">
+                        <!-- <form class="form" action=" "> -->
+                            <div align="center" class="ipt">
+                                <label for="ten_sp">Tên sản phẩm</label>
+                                <input class="input input_ten" id="ten_sp" type="text" placeholder="Tên sản phẩm">
+                            </div>
+                            <div align="center" class="ipt">
+                                <label for="link_anh">Link ảnh</label>
+                                <input class="input input_link" id="link_anh" type="text" placeholder="Link ảnh">
+                            </div>
+                            <div align="center" class="ipt">
+                                <label for="so_luong">Số lượng</label>
+                                <input class="input input_sl" id="so_luong" type="text" placeholder="Số lượng">
+                            </div>
+                            <div align="center" class="ipt">
+                                <label for="gia">Giá</label>
+                            <input class="input input_gia" id="gia" type="text" placeholder="Giá">
+                            </div>
+                            <button class="btn Them_btn" type="submit" onclick="them()">Thêm</button>
+                        <!-- </form> -->
+                        </div>
+                  </div>
+                  <div id="erase_id" class="tab-pane">
+                    
+                  </div>
+                  <div id="edit_id" class="tab-pane">
+                    
+                  </div>
+                  <div id="" class="tab-pane">
+                    <h2>Vue.js</h2>
+                    <p>Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. </p>
+                  </div>
+                </div>
+              </div>
+            <!-- Sản Phẩm -->
+            <div class="grid" id="san_pham">
+                <div class="sanPham" align="center">
+                    <div class="img_sp link_anh" style="background-image: url(https://binhminhdigital.com/storedata/images/product/canon-eos-4000d-kit-1855mm-f3556-iii-den.jpg);" ></div>
+                    <div class="thongTin">
+                        <h3 class="ten_sp">Máy ảnh Canon EOS 80D</h3>
+                        <p class="sl">Số lượng:&nbsp;</p><p class="sl sl_value">1</p><br>
+                        <p class="gia">Giá:&nbsp;</p><p class="gia gia_value">21.000.000</p><p class="gia">&nbsp;đ</p>
+                        <button class="btn mua_btn" style="display: none;">Mua hàng</button>
+                        <button class="btn GH_btn" style="display: none;">Thêm vào giỏ hàng</button>
+                        <button class="btn xoa_btn"  style="display: none;">Xóa hàng</button>
+                        <button class="btn sua_btn"  style="display: none;">Sửa hàng</button>
+                    </div>
+                </div>
+                <div class="sanPham" align="center">
+                    <div class="img_sp link_anh" style="background-image: url(https://u6wdnj9wggobj.vcdn.cloud/media/catalog/product/cache/95cb36d3254e0a20b33361b06e7c0ce9/y/t/yt011-pk.jpg);" ></div>
+                    <div class="thongTin">
+                        <h3 class="ten_sp">Máy ảnh Nikon D750</h3>
+                        <p class="sl">Số lượng:&nbsp;</p><p class="sl sl_value">1</p><br>
+                        <p class="gia">Giá:&nbsp;</p><p class="gia gia_value">20.000.000</p><p class="gia">&nbsp;đ</p>
+                        <button class="btn mua_btn" style="display: none;">Mua hàng</button>
+                        <button class="btn GH_btn" style="display: none;">Thêm vào giỏ hàng</button>
+                        <button class="btn xoa_btn"  style="display: none;">Xóa hàng</button>
+                        <button class="btn sua_btn"  style="display: none;">Sửa hàng</button>
+                    </div>
+                </div>
+                <div class="sanPham" align="center">
+                    <div class="img_sp link_anh" style="background-image: url(https://camerabox.vn/uploads/shops/camera/nikon-camera/2008/nikon-d90/nikon-d90-3.png);" ></div>
+                    <div class="thongTin">
+                        <h3 class="ten_sp">Máy ảnh Sony Alpha a7 III</h3>
+                        <p class="sl">Số lượng:&nbsp;</p><p class="sl sl_value">1</p><br>
+                        <p class="gia">Giá:&nbsp;</p><p class="gia gia_value">23.000.000</p><p class="gia">&nbsp;đ</p>
+                        <button class="btn mua_btn" style="display: none;">Mua hàng</button>
+                        <button class="btn GH_btn" style="display: none;">Thêm vào giỏ hàng</button>
+                        <button class="btn xoa_btn"  style="display: none;">Xóa hàng</button>
+                        <button class="btn sua_btn"  style="display: none;">Sửa hàng</button>
+                    </div>
+                </div>
+                <div class="sanPham" align="center">
+                    <div class="img_sp link_anh" style="background-image: url(https://binhminhdigital.com/storedata/images/product/may-anh-canon-eos-m200-kit-ef-m-15-45mm-is-stm-trang.jpg);" ></div>
+                    <div class="thongTin">
+                        <h3 class="ten_sp">Máy ảnh Sony Omega a1 III</h3>
+                        <p class="sl">Số lượng:&nbsp;</p><p class="sl sl_value">1</p><br>
+                        <p class="gia">Giá:&nbsp;</p><p class="gia gia_value">19.000.000</p><p class="gia">&nbsp;đ</p>
+                        <button class="btn mua_btn" style="display: none;">Mua hàng</button>
+                        <button class="btn GH_btn" style="display: none;">Thêm vào giỏ hàng</button>
+                        <button class="btn xoa_btn"  style="display: none;">Xóa hàng</button>
+                        <button class="btn sua_btn"  style="display: none;">Sửa hàng</button>
+                    </div>
+                </div>
+                <div class="sanPham" align="center">
+                    <div class="img_sp link_anh" style="background-image: url(https://bizweb.dktcdn.net/100/354/778/products/canon-700d-lens-18-55-is-stm-2.jpg?v=1611802208983);" ></div>
+                    <div class="thongTin">
+                        <h3 class="ten_sp">Máy ảnh Sony Alpha a50 I</h3>
+                        <p class="sl">Số lượng:&nbsp;</p><p class="sl sl_value">1</p><br>
+                        <p class="gia">Giá:&nbsp;</p><p class="gia gia_value">25.000.000</p><p class="gia">&nbsp;đ</p>
+                        <button class="btn mua_btn" style="display: none;">Mua hàng</button>
+                        <button class="btn GH_btn" style="display: none;">Thêm vào giỏ hàng</button>
+                        <button class="btn xoa_btn"  style="display: none;">Xóa hàng</button>
+                        <button class="btn sua_btn"  style="display: none;">Sửa hàng</button>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </section>
+        <section  id="gioHang">
+            <h2>GIỎ HÀNG</h2>
+            <form action="">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Chọn</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sanPhamGH">
+                        <tr>
+                            <td style="display: flex; align-items: center;"><img style="width: 80px;" src="https://bizweb.dktcdn.net/100/354/778/products/canon-700d-lens-18-55-is-stm-2.jpg?v=1611802208983" alt="Lỗi!!!">Máy ảnh Sony Alpha a50 I</td>
+                            <td><p><span>25.000.000</span><sup>đ</sup></td>
+                            <td><input style="width: 35px;outline: none;" type="number" value="1" min="1"></td>
+                            <td style="cursor: pointer;">Xóa</td>
+                        </tr>
+                        <tr>
+                            <td style="display: flex; align-items: center;"><img style="width: 80px;" src="https://binhminhdigital.com/storedata/images/product/may-anh-canon-eos-m200-kit-ef-m-15-45mm-is-stm-trang.jpg" alt="Lỗi!!!">Máy ảnh Sony Omega a1 III</td>
+                            <td><p><span>19.000.000</span><sup>đ</sup></td>
+                            <td><input style="width: 35px;outline: none;" type="number" value="1" min="1"></td>
+                            <td style="cursor: pointer;">Xóa</td>
+                        </tr>
+                    </tbody>
+                    <div style="text-align: right;">
+                        <tr>
+                            <td class="tongTien" style="text-align: left;">Tổng tiền: </td>
+                            <td class="tongTien"><p><span>44.000.000</span><sup>đ</sup></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </div>
+                </table>
+            </form>
+        </section>
+        </main>
+    </div>
+        <footer class="footer">
+            <p>© Có cái đặc cầu!!!</p>
+        </footer>
+</div>
+    <script src="main.js"></script>
+
+</body>
+</html>
