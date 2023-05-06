@@ -11,6 +11,13 @@ const edit_btn = $('.edit_btn');
 const Them_btn = $('.Them_btn');
 const Sua_btn = $('.Sua_btn');
 
+$('.header_ul-li1').onmouseover = function(){
+	$('.roll').style.display = 'block'
+	$('.header_ul-li1').onmouseout = function(){
+		$('.roll').style.display = 'none'
+	}
+}
+
 function login1(){
 	document.querySelector('.home').style.display = 'none';
 	document.querySelector('.Login').style.display = 'block';
