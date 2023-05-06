@@ -355,6 +355,16 @@ function themVaoGioHang(){
 	var GH_btn = Object.values($$('.GH_btn'))
 	GH_btn.forEach(function(GH_btn, index){
 		GH_btn.onclick = function (){
+			var hang = $$('#sanPhamGH tr td:first-child')
+			var sl = $$('#sanPhamGH input')
+			for(var i = 0; i < hang.length; i++){
+				if(hang[i].innerText === arrs[indexGH].ten_sp && sl[i].value < arrs[indexGH].so_luong){
+					return sl[i].value++
+				}
+				if(hang[i].innerText === arrs[indexGH].ten_sp && sl[i].value === arrs[indexGH].so_luong){
+					return confirm('Số lượng hàng tối đa!!!')
+				}
+			}
 			document.getElementById("sanPhamGH").insertAdjacentHTML('beforeend', `<tr>
 			<td style="display: flex; align-items: center;"><img style="width: 80px;" src="${arrs[index].link_anh}" alt="Lỗi!!!">${arrs[index].ten_sp}</td>
 			<td><p><span>${arrs[index].gia}</span><sup>đ</sup></td>
@@ -363,7 +373,7 @@ function themVaoGioHang(){
 			</tr>`)
 			tongTien()
 			var soLuong = $$('#gioHang table tbody input')
-			soLuong.forEach(function(soLuong, index){
+			soLuong.forEach(function(soLuong){
 				soLuong.onchange = function(){ tongTien() }
 			})
 		}
@@ -371,7 +381,7 @@ function themVaoGioHang(){
 }
 themVaoGioHang()
 
-var soLuong = $$('#gioHang table tbody input')
+var soLuong = $$('#sanPhamGH input')
 soLuong.forEach(function(soLuong, index){
 	soLuong.onchange = function(){ tongTien() }
 })
