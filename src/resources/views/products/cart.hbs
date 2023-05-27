@@ -1,4 +1,4 @@
-<div class="container mt-5">
+        <div id="cart" class="container mt-5">
             <div id="thongbao" class="alert alert-danger d-none face" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-
+<h1 id="emptyCart" style="display: none;" class="text-center mt-7">GIỎ HÀNG TRỐNG</h1>
 
 
 <form name="del-text" method="POST"></form>
@@ -78,16 +78,24 @@ document.addEventListener('DOMContentLoaded', function(){
     var checkAll = $('#checkAll')
     var checkForm = document.forms['check']
     var delForm = document.forms['del-text']
-    var gia_cart = document.querySelectorAll('.gia_cart')
-    var sl_cart = document.querySelectorAll('.sl_cart')
-    var check_cart = document.querySelectorAll('.check_cart')
-    var checkAll_cart = document.querySelector('#checkAll')
-    var total = document.querySelector('#total')
-    var totalO = document.querySelector('#totalO')
-    var product = document.querySelector('.product')
-    var plus = document.querySelectorAll('.plus')
-    var minus = document.querySelectorAll('.minus')
-    var paymentForm = document.querySelector('.payment')
+    const gia_cart = document.querySelectorAll('.gia_cart')
+    const sl_cart = document.querySelectorAll('.sl_cart')
+    const check_cart = document.querySelectorAll('.check_cart')
+    const checkAll_cart = document.querySelector('#checkAll')
+    const total = document.querySelector('#total')
+    const emptyCart = document.querySelector('#emptyCart')
+    const cart = document.querySelector('#cart')
+    const totalO = document.querySelector('#totalO')
+    const product = document.querySelectorAll('.product')
+    const plus = document.querySelectorAll('.plus')
+    const minus = document.querySelectorAll('.minus')
+    const paymentForm = document.querySelector('.payment')
+    
+    if(product.length === 0){
+        emptyCart.style.display = 'block'
+        cart.style.display = 'none'
+    }
+
 
     checkAll.prop('checked', check.length == $('input[name="check"]:checked').length && check.length != 0)
     checkAll.change(function(){
