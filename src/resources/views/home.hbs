@@ -1,0 +1,43 @@
+
+<body class="body">
+<div>
+    <div class="home" style="display: block;">
+        <main>
+            <!-- Sản Phẩm -->
+            <div class="" id="san_pham">
+
+        {{#each product}}
+                <div class="sanPham" align="center">
+                    <form action="{{this._id}}/?_method=PUT" method="POST">
+                    <a href="/product/{{this.name}}"><div class="img_sp link_anh" style="background-image: url({{this.img}});" ></div></a>
+                    <div class="thongTin">
+                        <a href="/product/{{this.name}}"><h3 class="ten_sp">{{this.name}}</h3></a>
+                        <p style="font-size: 14px;" class="sl">Số lượng:&nbsp;</p><p style="font-size: 14px;" class="sl sl_value">{{this.quantity}}</p><br>
+                        <p style="font-size: 14px;"class="gia">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Giá:&nbsp;</p><p style="font-size: 14px;"class="gia gia_value">{{this.price}}</p><p style="font-size: 14px;"class="gia">&nbsp;đ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        <button class="btn GH_btn"  style="background-color: aqua;" data-id="{{this.name}}">Thêm vào giỏ hàng</button>
+                    </div>
+                    </form>
+                </div>
+        {{/each}} 
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<form name="del-text" method="POST"></form>
+
+<script>
+
+    var delForm = document.forms['del-text']
+
+    document.querySelectorAll('.text-delete').forEach(function(textDelete){
+        textDelete.onclick = function(){
+            delForm.action = textDelete.id + '/?_method=PUT'
+        }
+    })
+
+
+</script>
+
+</body>
