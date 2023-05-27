@@ -1,4 +1,4 @@
-<div class="accordion mt-7" id="accordionExample">
+<div class="accordion mt-3" id="accordionExample">
     
 {{#each buy1}}
   <div style="background-color: rgba(0,0,0,0);" class="accordion-item">
@@ -36,7 +36,7 @@
                                     <td style="color:aqua;" class="text-center">Tổng tiền: </td>
                                     <td></td><td></td>
                                     <td style="color:aqua;" class="text-center">
-                                        <small  class="text-muted"><s><span class="totalO">{{this.total.old}}</span><sup>₫</sup></s></small>
+                                        <small  style="display: none;" class="text-muted tt"><s><span class="totalO">{{this.total.old}}</span><sup>₫</sup></s></small>
                                         <p><span class="total">{{this.total.new}}</span><sup>₫</sup></p>
                                     </td>
                                 </tr>
@@ -58,7 +58,7 @@
 
         for(var i = 0; i < total.length; i++)
         if(total[i].innerHTML != totalO[i].innerHTML)
-        totalO[i].style.display = 'contents'
+        document.querySelectorAll('.tt')[i].style.display = 'contents'
 
         time.forEach(function(time){
             switch(time.innerHTML.slice(1, 4)){

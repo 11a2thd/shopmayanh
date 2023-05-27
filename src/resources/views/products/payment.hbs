@@ -63,41 +63,17 @@
                             <div class="col-md-12">
                                 <label for="kh_ten">Họ tên</label>
                                 <input type="text" class="form-control" name="kh_ten" id="kh_ten"
-                                    value="" readonly="">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="kh_gioitinh">Giới tính</label>
-                                <select id="kh_gioitinh" class="form-select" aria-label="Default select example">
-                                    <option value="" selected>-- Giới tính --</option>
-                                    <option value="nam">Nam</option>
-                                    <option value="nu">Nữ</option>
-                                    <option value="khac">Khác</option>
-                                </select>
+                                    value="">
                             </div>
                             <div class="col-md-12">
                                 <label for="kh_diachi">Địa chỉ</label>
                                 <input type="text" class="form-control" name="kh_diachi" id="kh_diachi"
-                                    value="" readonly="">
+                                    value="">
                             </div>
                             <div class="col-md-12">
                                 <label for="kh_dienthoai">Điện thoại</label>
                                 <input type="text" class="form-control" name="kh_dienthoai" id="kh_dienthoai"
-                                    value="" readonly="">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="kh_email">Email</label>
-                                <input type="text" class="form-control" name="kh_email" id="kh_email"
-                                    value="" readonly="">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="kh_ngaysinh">Ngày sinh</label>
-                                <input type="text" class="form-control" name="kh_ngaysinh" id="kh_ngaysinh"
-                                    value="" readonly="">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="kh_cccd">CMND</label>
-                                <input type="text" class="form-control" name="kh_cccd" id="kh_cccd" value=""
-                                    readonly="">
+                                    value="">
                             </div>
                         </div>
 
@@ -137,16 +113,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const gia = document.querySelectorAll('.gia')
     const giaxsoLuong = document.querySelectorAll('.giaxsoLuong')
     const total = document.querySelectorAll('.total')
-    const nhapTen = document.querySelector('#kh_ten')
-    const nhapGioiTinh = document.querySelector('#kh_gioitinh')
-    const nhapDiaChi = document.querySelector('#kh_diachi')
     const giam = document.querySelector('.giam')
-    const nhapDienThoai = document.querySelector('#kh_dienthoai')
-    const nhapEmail = document.querySelector('#kh_email')
-    const nhapNgaySinh = document.querySelector('#kh_ngaysinh')
-    const nhapCCCD = document.querySelector('#kh_cccd')
     const payments = document.querySelectorAll('.custom-control-input')
     const sales = document.querySelector('#sales')
+    const form_control = document.querySelectorAll('.form-control')
     
     var temp = 0
     var totalO = 0
@@ -196,12 +166,22 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     datHang.onclick = function() {
+
+        if(form_control[0].value === '')
+        return confirm('Hãy nhập họ và tên!!!')
+
+        if(form_control[1].value === '')
+        return confirm('Hãy nhập địa chỉ!!!')
+
+        if(form_control[2].value === '')
+        return confirm('Hãy nhập số điện thoại!!!')
+
         for(var i = 0; i < payments.length; i++){
             console.log(payments[i].checked === false)
             if(payments[i].checked === false && i === (payments.length - 1)){
                 confirm('Hãy chọn hình thức thanh toán!!!')
                 break;
-            }  
+            }
             else if(payments[i].checked){
                 formPOST.action = 'payment/' + totalN + '/' + payments[i].value + '?_method=PUT'
                 formPOST.submit()
