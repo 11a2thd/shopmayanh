@@ -107,6 +107,8 @@ class HomeController{
                     bData.price = bData.price.slice(0, i) + '.' + bData.price.slice(i)
                     
                 })
+                if(req.params.slug !== 'oldest')
+                pData.reverse()
                 
                 res.render('home', {
                     product: pData,
