@@ -13,6 +13,7 @@ const route = require('./routes')
 
 app.use(express.urlencoded())
 app.use(express.json())
+app.use(express.static(__dirname + '/public'));
 
 
 

@@ -20,7 +20,7 @@ body {
 align-items: center;
 }
 
-header:nth-child(1)
+header:nth-child(0)
 
 header{
   background-color: #242526;
@@ -31,6 +31,13 @@ header{
   top: 0px;
   line-height: 20px;
   flex-direction: row-reverse;    
+}
+
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
 }
 
 footer{
@@ -111,6 +118,11 @@ footer{
   margin-right: -12px;
 } */
 
+.aa{
+  background-color: #eee;
+  width: auto;
+  display: flex;
+}
 
 h1 {
   text-align: center;
@@ -195,7 +207,24 @@ label{
 
 button:hover{ opacity: 0.6; }
 
-#san_pham{
+.this-page{ 
+  color: red;
+  opacity: 0.6;
+}
+
+.page-item{
+  color: #007bff;
+}
+
+.page{
+  display: flex;
+}
+
+.dpn{
+  display: none;
+}
+
+.san_pham{
   align-items: center;
   display: flex;
   flex-wrap: wrap;

@@ -1,12 +1,27 @@
 
-<body>
+<body class="body mt-7">
 <div>
-    <div class="home" style="display: block;">
+    <div style="display: flex;" class="home">
+      
         <main>
-            <!-- Sản Phẩm -->
-            <div class="" id="san_pham">
-
-        {{#each product}}
+                  <div class="lbl-cnt mr-auto"> <span style="color: aliceblue;" class="lbl">Sắp xếp&nbsp;</span>
+                    <div class="fld inline">
+                      <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
+                        <button style="background-color: aliceblue;}" 
+                          data-toggle="dropdown" type="button" class="btn dropdown-toggle sort" fdprocessedid="6gvpc9">Mới nhất</button>
+                        <ul role="menu" class="dropdown-menu sort_list">
+                          <li role="presentation" class="ml-2"><a href="/">Mới nhất</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-ascending" class="price-ascending">Giá tăng dần</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-descending" class="price-descending">Giá giảm dần</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-lower-20" class="price-lower-20">Dưới 20 triệu</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-20-to-40" class="price-20-to-40">Từ 20 - 40 triệu</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-40-to-70" class="price-40-to-70">Từ 40 - 70 triệu</a></li>
+                          <li role="presentation" class="ml-2"><a href="/sort_by/price-upper-70" class="price-upper-70">Trên 70 triệu</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+            {{#each product}}
                 <div class="sanPham" align="center">
                     <form action="{{this._id}}/?_method=PUT" method="POST">
                     <a href="/product/{{this.name}}"><div class="img_sp link_anh" style="background-image: url({{this.img}});" ></div></a>
@@ -19,25 +34,114 @@
                     </form>
                 </div>
         {{/each}} 
-
-            </div>
+            
+            
         </main>
+        
     </div>
+        
 </div>
 
-<form name="del-text" method="POST"></form>
-
 <script>
+document.addEventListener('DOMContentLoaded', function(){
 
-    var delForm = document.forms['del-text']
+  const URL = window.location.href;
+  const sort = document.querySelector('.sort')
+  const sort_list = document.querySelector('.sort_list')
+  const sanPham = document.querySelectorAll('.sanPham')
+  const main = document.querySelector('main')
 
-    document.querySelectorAll('.text-delete').forEach(function(textDelete){
-        textDelete.onclick = function(){
-            delForm.action = textDelete.id + '/?_method=PUT'
-        }
-    })
+  if(URL.slice(30) !== '')
+  sort.innerHTML = sort_list.querySelector('.' + URL.slice(30)).innerHTML
+
+  var k = 0
+  var j = 0
+  var page_a = []
+  var page_li = []
+  for(var i = 0; i <= (sanPham.length / 10) ; i++){
+    const san_pham = document.createElement('div');
+    k += 10
+    if(k >= sanPham.length) k = sanPham.length
+    for(j; j < k; j++){
+      san_pham.appendChild(sanPham[j])
+    }
+    document.body.appendChild(san_pham);
+    san_pham.classList.add('san_pham')
+    
+    page_a[i] = document.createElement('a')
+    page_a[i].classList.add('page-link')
+    page_a[i].innerHTML = i + 1
+    page_li[i] = document.createElement('li')
+    page_li[i].classList.add('page-item')
+    
+    page_li[i].appendChild(page_a[i])
+    
+    if(i > 0) san_pham.style.display = 'none'
+    if(j === sanPham.length && page_a.length > 1){
+      san_pham.insertAdjacentHTML('afterend', `<div>
+              <nav aria-label="Page navigation example">
+                <ul class="pagination" style="margin-left: 700px;">
+                  <li class="page-item">
+                    <a class="page-link" style="color: #007bff;" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <div class="page">
+                  
+                  </div>
+                  <li class="page-item">
+                    <a class="page-link" style="color: #007bff;" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>`)
+            for(var i = 0; i <= (sanPham.length / 10) ; i++){
+              document.querySelector('.page').appendChild(page_li[i])
+            }
+    }
+    
+  }
+  const san_pham = document.querySelectorAll('.san_pham')
+  const page = document.querySelectorAll('.page-link')
 
 
+  
+  page[1].classList.add('this-page')
+  page.forEach(function(page, index, element) {
+    page.onclick = function(){
+      if(page.innerHTML !== '...' && index !== 0 && index !== (element.length - 1)){
+        document.querySelector('.page-link.this-page').classList.remove("this-page");
+        page.classList.add('this-page')
+        san_pham.forEach((san_pham) => {
+          if(san_pham.style.display !== 'none') san_pham.style.display = 'none'
+        })
+        san_pham[Number(page.innerHTML) - 1].style.display = 'flex'
+      }
+      if(index === 0 && document.querySelector('.this-page').innerHTML !== '1'){
+        var a = Number(document.querySelector('.this-page').innerHTML) - 1
+        document.querySelector('.page-link.this-page').classList.remove("this-page");
+        element[a].classList.add('this-page')
+        san_pham.forEach((san_pham) => {
+          if(san_pham.style.display !== 'none') san_pham.style.display = 'none'
+        })
+        san_pham[Number(element[a].innerHTML) - 1].style.display = 'flex'
+      }
+      if(index === (element.length - 1) && Number(document.querySelector('.this-page').innerHTML) !== element.length - 2){
+        var a = Number(document.querySelector('.this-page').innerHTML) + 1
+        document.querySelector('.page-link.this-page').classList.remove("this-page");
+        element[a].classList.add('this-page')
+        san_pham.forEach((san_pham) => {
+          if(san_pham.style.display !== 'none') san_pham.style.display = 'none'
+        })
+        san_pham[Number(element[a].innerHTML) - 1].style.display = 'flex'
+      }
+    }
+  })
+
+
+})
 </script>
 
 </body>

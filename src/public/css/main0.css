@@ -3584,7 +3584,8 @@ age-container #owl-main .owl-next {
   opacity: 1;
 }
 .filters-container {
-  padding: 15px 20px;
+  height: 32px;
+  padding: 2px 20px;
    background-color: #fff;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.08);
 	padding-bottom:0px
