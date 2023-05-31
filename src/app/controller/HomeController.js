@@ -68,9 +68,9 @@ class HomeController{
                 var pData = product
                 var bData = []
                 if(req.params.slug === 'price-ascending')
-                pData.sort((a, b) => a.price - b.price);
+                pData.sort((a, b) => b.price - a.price) 
                 else if(req.params.slug === 'price-descending')
-                pData.sort((a, b) => b.price - a.price)
+                pData.sort((a, b) => a.price - b.price);
                 else if(req.params.slug === 'price-lower-20')
                 pData = pData.filter(function(value) {
                     return value.price < 20000000;
